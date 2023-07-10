@@ -128,8 +128,8 @@ function run_pre_build_script() {
 
 function docker_build() {
   echo "== START DOCKERIZE"
-  export GITHUB_TOKEN=$INPUT_GITHUB_TOKEN
   export GITHUB_USER=$INPUI_GITHUB_USER
+  export GITHUB_TOKEN=$INPUT_GITHUB_TOKEN
   local TAG=$1
   local docker_tag_args=""
   local DOCKER_TAGS=$(echo "$TAG" | tr "," "\n")
