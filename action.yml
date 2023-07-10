@@ -58,9 +58,15 @@ inputs:
   prebuild_script:
     description: Relative path from top-level to script to run before Docker build
     required: false
+  github_token:
+    description: environment variable GITHUB_TOKEN
+    required: false
 outputs:
   image:
     description: 'The created image name'
 runs:
   using: docker
   image: Dockerfile
+env:
+  GITHUB_TOKEN: ${{ inputs.github_token }}
+  GITHUB_USERNAME: ${{ github.actor }}
