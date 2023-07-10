@@ -8,8 +8,6 @@ INPUT_CREATE_REPO="${INPUT_CREATE_REPO:-false}"
 INPUT_SET_REPO_POLICY="${INPUT_SET_REPO_POLICY:-false}"
 INPUT_REPO_POLICY_FILE="${INPUT_REPO_POLICY_FILE:-repo-policy.json}"
 INPUT_IMAGE_SCANNING_CONFIGURATION="${INPUT_IMAGE_SCANNING_CONFIGURATION:-false}"
-INPUT_GITHUB_USER="${GITHUB_USER:-$GITHUB_USER}"
-INPUI_GITHUB_TOKEN="${GITHUB_TOKEN:-$GITHUB_TOKEN}"
 
 function main() {
   sanitize "${INPUT_ACCESS_KEY_ID}" "access_key_id"
@@ -130,6 +128,8 @@ function run_pre_build_script() {
 
 function docker_build() {
   echo "== START DOCKERIZE"
+  export GITHUB_TOKEN=$INPUT_GITHUB_TOKEN
+  export GITHUB_USER=$INPUI_GITHUB_USER
   local TAG=$1
   local docker_tag_args=""
   local DOCKER_TAGS=$(echo "$TAG" | tr "," "\n")

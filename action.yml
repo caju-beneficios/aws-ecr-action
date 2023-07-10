@@ -60,7 +60,7 @@ inputs:
     required: false
   github_token:
     description: "GitHub Token used to authenticate against a repository for Git context"
-    default: ${{ secrets.READ_PRIVATE_PACKAGES_TOKEN }}
+    default: ${{ github.token }}
     required: false
   github_user:
     description: "GitHub user used to authenticate against a repository for Git context"
