@@ -8,6 +8,8 @@ INPUT_CREATE_REPO="${INPUT_CREATE_REPO:-false}"
 INPUT_SET_REPO_POLICY="${INPUT_SET_REPO_POLICY:-false}"
 INPUT_REPO_POLICY_FILE="${INPUT_REPO_POLICY_FILE:-repo-policy.json}"
 INPUT_IMAGE_SCANNING_CONFIGURATION="${INPUT_IMAGE_SCANNING_CONFIGURATION:-false}"
+INPUT_GITHUB_USER="${GITHUB_USER:-$GITHUB_USER}"
+INPUI_GITHUB_TOKEN="${GITHUB_TOKEN:-$GITHUB_TOKEN}"
 
 function main() {
   sanitize "${INPUT_ACCESS_KEY_ID}" "access_key_id"
@@ -15,6 +17,8 @@ function main() {
   sanitize "${INPUT_REGION}" "region"
   sanitize "${INPUT_ACCOUNT_ID}" "account_id"
   sanitize "${INPUT_REPO}" "repo"
+  sanitize "${INPUT_GITHUB_USER}" "github_user"
+  sanitize "${INPUI_GITHUB_TOKEN}" "github_token"
 
   ACCOUNT_URL="$INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com"
 

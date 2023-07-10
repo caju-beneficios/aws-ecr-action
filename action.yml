@@ -59,7 +59,12 @@ inputs:
     description: Relative path from top-level to script to run before Docker build
     required: false
   github_token:
-    description: environment variable GITHUB_TOKEN
+    description: "GitHub Token used to authenticate against a repository for Git context"
+    default: ${{ secrets.READ_PRIVATE_PACKAGES_TOKEN }}
+    required: false
+  github_user:
+    description: "GitHub user used to authenticate against a repository for Git context"
+    default: ${{ github.actor }}
     required: false
 outputs:
   image:
@@ -67,6 +72,3 @@ outputs:
 runs:
   using: docker
   image: Dockerfile
-env:
-  GITHUB_TOKEN: ${{ inputs.github_token }}
-  GITHUB_USERNAME: ${{ github.actor }}
